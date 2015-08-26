@@ -78,22 +78,17 @@
 		
 		info.addTo(map);
 		
-		/* for(var i = 0; i < blockData.length; i++) {
-    var obj = blockData.features[i].properties.PCT_WHITE;
-
-    console.log(obj);
-} */
-
-$.getJSON('data/denver.census.blocks.short.geo.js', function(json) {
-  $.each(json,function(i, value){
-     // $('#ImageGallery').append('<p>'+ value.image + '</p>');
-     //$ul = $('<ul class="brands"></ul>').appendTo('#ImageGallery');
-     //$.each(value.brands, function(index, obj){
-     //    $ul.append('<li>'+ obj.brand +'</li>');
-     })
-     console.log(value)
-});
-		
+		for(var i = 0; i < blockData.features.length; i++) {
+    		var pctHispanic = blockData.features[i].properties.PCT_HISPAN;
+    		var pctWhite = blockData.features[i].properties.PCT_WHITE;
+    		var pctBlack = blockData.features[i].properties.PCT_BLACK;
+    		var pctAmIndian = blockData.features[i].properties.PCT_AMERIN;
+    		var pctAsian = blockData.features[i].properties.PCT_ASIAN;
+    		var pctPacIsland = blockData.features[i].properties.PCT_HAW_PA;
+    		var pctOther = blockData.features[i].properties.PCT_OTHER_;
+			console.log(pctHispanic, pctWhite, pctBlack, pctAmIndian, pctAsian, pctPacIsland, pctOther);
+		}
+    
 		// console.log(blockData.features[0].properties.PCT_WHITE)
 		
 		// get color depending on population density value
