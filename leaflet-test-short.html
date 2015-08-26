@@ -78,6 +78,7 @@
 		
 		info.addTo(map);
 		
+		// loop through geojson for race percentages
 		for(var i = 0; i < blockData.features.length; i++) {
     		var pctHispanic = blockData.features[i].properties.PCT_HISPAN;
     		var pctWhite = blockData.features[i].properties.PCT_WHITE;
@@ -91,18 +92,25 @@
     
 		// console.log(blockData.features[0].properties.PCT_WHITE)
 		
+		function getColor(pctWhite) {
+			return pctWhite > 50 ? '#FF0000' :
+								   '#000000';	
+		}
+		
+		
+		
 		// get color depending on population density value
-		function getColor(d) {
+		/* function getColor(d) {
 			return d > 100 ? '#800026' :
 			       d > 75  ? '#BD0026' :
 			       d > 25  ? '#E31A1C' :
 			       d > 50  ? '#FC4E2A' :
 			       /* d > 30   ? '#FD8D3C' :
 			       d > 20   ? '#FEB24C' :
-			       d > 10   ? '#FED976' : */
+			       d > 10   ? '#FED976' :
 			                  '#FFEDA0';
 			       console.log(getColor);
-		}
+		} */
 
 		function style(feature) {
 			return {
@@ -110,7 +118,8 @@
 				opacity: .5,
 				color: 'white',
 				dashArray: '3',
-				fillOpacity: 0.3,
+				fillOpacity: 1.0,
+				//fillColor: getColor(pctWhite)
 				fillColor: getColor(feature.properties.PCT_WHITE)
 			};
 		}
